@@ -80,7 +80,10 @@ public class ProdutosDAO {
 
             while (rs.next()) {
                 ProdutosDTO produtos = new ProdutosDTO();
-
+                
+                produtos.setId(rs.getInt("id"));
+                produtos.setNome(rs.getString("nome"));
+                produtos.setValor(rs.getInt("valor"));
                 produtos.setStatus(rs.getString("status"));
 
                 listagem.add(produtos);
