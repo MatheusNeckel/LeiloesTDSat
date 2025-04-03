@@ -55,4 +55,18 @@ public class ProdutosDAO {
         }
         return listagem;
     }
+
+    public int venderProduto(ProdutosDTO produtos) {
+        int status;
+
+        try {
+            prep = conn.prepareStatement("UPDATE produtos SET status = Vendido where id = ?");
+            prep.setString(1, produtos.getStatus());
+            status = prep.executeUpdate();
+            return status;
+        } catch (SQLException ex) {
+            System.out.println(ex.getErrorCode());
+            return ex.getErrorCode();
+        }
+    }
 }
